@@ -10,7 +10,7 @@ const WhyUs = () => {
                 <p className="text-[#56575C] font-semibold mt-4">Our online banking platform is user-friendly and easy to navigate.</p> 
             </div>
             <div className="flex justify-center flex-wrap gap-5 lg:gap-7 xl:gap-10 mt-14 text-center">
-                <div className="w-[23%] min-w-[15rem] flex flex-col gap-y-5 items-center border border-[#B2B3BA] p-4 rounded-xl">
+                <div className="w-[23%] min-w-[17rem] flex flex-col gap-y-5 items-center border border-[#B2B3BA] p-4 rounded-xl">
                         <div className="bg-primary rounded-[50%] size-12 md:size-14 xl:size-16 flex justify-center items-center">
                             <Bank size="26" className="text-secondary" variant="Bold"/>
                         </div>
@@ -20,7 +20,7 @@ const WhyUs = () => {
                         </div>
                         
                 </div>
-                <div className="w-[23%] min-w-[15rem] flex flex-col gap-y-5 items-center border border-[#B2B3BA] p-4 rounded-xl">
+                <div className="w-[23%] min-w-[17rem] flex flex-col gap-y-5 items-center border border-[#B2B3BA] p-4 rounded-xl">
                         <div className="bg-primary rounded-[50%] size-12 md:size-14 xl:size-16 flex justify-center items-center">
                             <Card size="26" className="text-secondary" variant="Bold"/>
                         </div>
@@ -30,7 +30,7 @@ const WhyUs = () => {
                         </div>
                         
                 </div>
-                <div className="w-[23%] min-w-[15rem] flex flex-col gap-y-5 items-center border border-[#B2B3BA] p-4 rounded-xl">
+                <div className="w-[23%] min-w-[17rem] flex flex-col gap-y-5 items-center border border-[#B2B3BA] p-4 rounded-xl">
                         <div className="bg-primary rounded-[50%] size-12 md:size-14 xl:size-16 flex justify-center items-center">
                             <MoneyAdd size="26" className="text-secondary" variant="Bold"/>
                         </div>
@@ -40,7 +40,7 @@ const WhyUs = () => {
                         </div>
                         
                 </div>
-                <div className="w-[23%] min-w-[15rem] flex flex-col gap-y-5 items-center border border-[#B2B3BA] p-4 rounded-xl">
+                <div className="w-[23%] min-w-[17rem] flex flex-col gap-y-5 items-center border border-[#B2B3BA] p-4 rounded-xl">
                         <div className="bg-primary rounded-[50%] size-12 md:size-14 xl:size-16 flex justify-center items-center">
                             <House2 size="26" className="text-secondary" variant="Bold"/>
                         </div>

@@ -84,7 +84,7 @@ export const authOptions: AuthOptions = {
 
   session: {
     strategy: "jwt",
-    //maxAge: 2 * 60 * 60, Makes the token valid for 2 hours
+    maxAge: 2 * 60 * 60
   },
   secret: process.env.NEXTAUTH_SECRET,
 };

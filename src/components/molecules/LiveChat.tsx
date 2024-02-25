@@ -7,7 +7,7 @@ const LiveChat = () => {
     // Create a script element
     const script = document.createElement('script');
     script.type = 'text/javascript';
-    script.src = '//code.tidio.co/0jhkgmdcwynvcxgt8dmtzos6dfxj4lv9.js';
+    script.src = '//code.tidio.co/ncvlfba3vmtze0czeeszczvxkb28whje.js';
     script.async = true;
 
     // Append the script to the body of the document
