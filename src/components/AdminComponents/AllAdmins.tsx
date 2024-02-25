@@ -29,7 +29,7 @@ const AllAdmins = ({ admins, transactions, currentCurrency }: any) => {
             admins.map((admin: any) => (
               <div
                 key={admin.id}
-                className="flex justify-between overflow-x-auto special pb-2 gap-x-5"
+                className="flex justify-between overflow-x-auto special pb-2 gap-x-10"
               >
                 <div className="flex flex-col gap-y-0.5 w-[33%] min-w-[10rem]">
                   <p className="text-xs xl:text-sm text-[#101828]">
@@ -65,7 +65,7 @@ const AllAdmins = ({ admins, transactions, currentCurrency }: any) => {
             ))}
         </div>
       </div>
-      <div className="mt-10 border border-[#7676801F] rounded-xl p-4 max-h-[50%] special">
+      <div className="mt-10 border border-[#7676801F] rounded-xl p-4 max-h-screen special">
         <p className="text-xl md:text-sm xl:text-base font-bold text-[#06121B] mb-8">
           Admin Transactions
         </p>

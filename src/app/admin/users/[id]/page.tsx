@@ -3,7 +3,6 @@ import Image from "next/image";
 import getIndividualUser from "@/actions/getIndividualUser";
 import getIndividualUserTransaction from "@/actions/getIndividualUserTransaction";
 import { formatDate, formatDateTime } from "@/lib/dateTimeUtils";
-import getCurrency from "@/actions/getCurrency";
 import Link from "next/link";
 
 //Import Needed Components
@@ -373,7 +372,7 @@ const page = async ({ params }: { params: { id: string } }) => {
                         </p>
                         <p className="text-[#9EA0A3] text-[0.6rem] xl:text-xs">
                           {transaction.doneByAdmin
-                            ? formatDate(transaction.customCreatedTime)
+                            ? formatDateTime(transaction.customCreatedTime)
                             : formatDate(transaction.createdAt)}
                           .
                         </p>
