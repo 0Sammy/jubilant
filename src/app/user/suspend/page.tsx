@@ -3,7 +3,7 @@ const page = () => {
 
     const handleButtonClick = () => {
         // Email details
-        const email = 'restricted@capitalspherebank.com';
+        const email = 'restricted@cspherebank.com';
         const subject = 'Account Restricted';
     
         // Create the mailto link

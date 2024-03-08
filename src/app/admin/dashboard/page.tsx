@@ -75,7 +75,7 @@ const page = async () => {
       );
   const savedAmount = capitalWealthAmount + saveBoxAmount;
   const transferAmount = domesticWireTransferAmount + internationalWireTransferAmount;
-  const lastSevenTransactions = transactions?.slice(-7);
+  const lastSevenTransactions = transactions?.slice(0, 7);
   const clients = await getUsers();
   const currency = await getCurrency()
   const currentCurrency = currency?.currentCurrency

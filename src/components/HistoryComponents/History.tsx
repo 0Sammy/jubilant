@@ -13,8 +13,8 @@ const History = ({transactions, currentCurrency}: any ) => {
             <div className="flex flex-col gap-y-2 mt-6 mb-4">
                 {transactions && transactions.map((transaction: any) => (
                     
-                    <Link key={transaction.id} href={`history/${transaction.id}`} className="hover:bg-slate-100 duration-500">
-                        <div className="flex items-center justify-between py-4 cursor-pointer">
+                <Link key={transaction.id} href={`history/${transaction.id}`} className="hover:bg-slate-100 duration-500">
+                    <div className="flex items-center justify-between py-4 cursor-pointer">
                         <div className="flex gap-x-1 items-center">
                             <div className="bg-[#EBEBF599] rounded-[50%] p-2">
                                 {transaction.type === "Deposit" ? <DirectboxReceive size="20" color="#1C1F33"/> : transaction.type.includes('Wire_Transfer') ? <Send2 size="20" color="#1C1F33"/> : transaction.type === "Utility_Bill" ? <Bill size="20" color="#1C1F33"/> : <WalletMoney size="20" color="#1C1F33"/> } 

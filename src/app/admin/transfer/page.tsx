@@ -1,11 +1,10 @@
-import Header from "@/components/AdminComponents/Header";
 import getUsers from "@/actions/getAllUsers";
 import { getServerSession } from "next-auth/next"
 import { authOptions } from "@/lib/authOptions";
-import getCurrentLoggedInAdmin from '@/actions/getCurrentAdmin';
 
 //Import Needed Components
 import TransactionForm from "@/components/AdminComponents/TransactionForm";
+import Header from "@/components/AdminComponents/Header";
 
 export const revalidate = 1;
 
@@ -13,7 +12,6 @@ const page = async () => {
 
     const session = await getServerSession(authOptions)
     const allUsers = await getUsers()
-    const userNames = allUsers.map(user => `${user.firstName} ${user.lastName}`);
     //console.log(userNames);
     //console.log({allUsers})
     if (session?.user){ 

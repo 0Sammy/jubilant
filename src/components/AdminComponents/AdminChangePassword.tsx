@@ -35,7 +35,7 @@ const AdminChangePassword = () => {
         setLoading(true)
 
         const formData = {newPassword: password, email: adminEmail, role: "admin"}
-        console.log({formData})
+        //console.log({formData})
         makeApiRequest("/passwordUpdate", "post", formData, {
             onSuccess: () => {
               // Handle success
