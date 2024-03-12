@@ -38,6 +38,7 @@ export default async function UserLayout({
       permanentRedirect('/user/suspend')
 
     }
+  }
   return (
 
       <section>
@@ -47,5 +48,5 @@ export default async function UserLayout({
       </section>
 
   )
-}
+
 }
