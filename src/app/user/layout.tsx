@@ -22,21 +22,17 @@ export default async function UserLayout({
     
     //Redirect accordingly
     if (currentUser?.isEmailVerified === false) {
-
       permanentRedirect('/onboarding/verification')
+    } 
 
-    } else if (currentUser?.hasTransactionPin === false){
-
+    if (currentUser?.hasTransactionPin === false){
       permanentRedirect('/onboarding/transaction')
-
-    } else if (currentUser?.isVerified === false) {
-
+    } 
+    if (currentUser?.isVerified === false) {
       permanentRedirect('/onboarding/review')
-
-    } else if (currentUser?.isSuspended === true) {
-
-      permanentRedirect('/user/suspend')
-
+    } 
+    if (currentUser?.isSuspended === true) {
+      permanentRedirect('/suspend')
     }
   }
   return (
