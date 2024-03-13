@@ -34,7 +34,7 @@ export default async function UserLayout({
     if (currentUser?.isSuspended === true) {
       permanentRedirect('/suspend')
     }
-  }
+  
   return (
 
       <section>
@@ -44,5 +44,5 @@ export default async function UserLayout({
       </section>
 
   )
-
+}
 }
