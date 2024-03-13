@@ -1,15 +1,21 @@
 import { getUserDetails } from "@/providers/userDetails";
+import { permanentRedirect } from "next/navigation";
+
 
 //Import Needed Components
 import Header from "@/components/DashboardComponents/Header";
 import SupportForm from "@/components/SupportComponents/SupportForm";
 import LiveChat from "@/components/molecules/LiveChat";
 
+
 export const revalidate = 30
 const page = async () => {
 
     const { user } = await getUserDetails();
 
+    if (user?.isSuspended){
+        permanentRedirect('/suspend') 
+     }
     return ( 
 
         <main>

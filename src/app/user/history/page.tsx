@@ -1,4 +1,6 @@
 import { getUserDetails } from "@/providers/userDetails";
+import { permanentRedirect } from "next/navigation";
+
 
 //Import Needed Components
 import Header from "@/components/DashboardComponents/Header";
@@ -6,6 +8,7 @@ import AccountDetails from "@/components/DashboardComponents/AccountDetails";
 import Activity from "@/components/DashboardComponents/Activity";
 import History from "@/components/HistoryComponents/History";
 import BalanceUpdate from "@/components/DashboardComponents/BalanceUpdate";
+
 
 
 export const revalidate = 30
@@ -16,6 +19,10 @@ const page = async () => {
     const wireTransferTransactions = transactions?.filter((transaction) => transaction.type.includes('Wire_Transfer'));
     const deposits = transactions?.filter((transaction) => transaction.type === "Deposit");
     const currentCurrency = user?.currency
+
+    if (user?.isSuspended){
+        permanentRedirect('/suspend') 
+     }
 
     return ( 
         <main>

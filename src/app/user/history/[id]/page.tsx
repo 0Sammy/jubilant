@@ -3,9 +3,12 @@ import { formatDate } from "@/lib/dateTimeUtils";
 import { formatDateTime } from "@/lib/dateTimeUtils";
 import getIndividualTransaction from "@/actions/getIndividualTransaction";
 import { getUserDetails } from "@/providers/userDetails";
+import { permanentRedirect } from "next/navigation";
+
 
 //Import Icons
 import { AddCircle, Discover } from "iconsax-react";
+
 
 
 
@@ -16,6 +19,10 @@ const page = async ({ params }: { params: { id: string } }) => {
   const transactionInformation = await getIndividualTransaction(transactionId);
   const { user } = await getUserDetails();
   const currentCurrency = user?.currency 
+
+  if (user?.isSuspended){
+    permanentRedirect('/suspend') 
+ }
 
   function showCorrectTransactionType(type: string | undefined): string {
     switch (type) {

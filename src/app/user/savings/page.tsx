@@ -1,4 +1,6 @@
 import { getUserDetails } from "@/providers/userDetails";
+import { permanentRedirect } from "next/navigation";
+
 
 //Import Needed Components
 import Header from "@/components/DashboardComponents/Header";
@@ -12,12 +14,17 @@ import BalanceUpdate from "@/components/DashboardComponents/BalanceUpdate";
 
 
 
+
 export const revalidate = 1
 const page = async () => {
 
     const { user } = await getUserDetails();
     const transactions = user?.transactions
     const currentCurrency = user?.currency 
+
+    if (user?.isSuspended){
+        permanentRedirect('/suspend') 
+     }
 
     return ( 
         <main>

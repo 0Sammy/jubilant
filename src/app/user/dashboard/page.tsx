@@ -1,4 +1,5 @@
 import { getUserDetails } from "@/providers/userDetails";
+import { permanentRedirect } from 'next/navigation';
 
 //Import Needed Components
 import Header from "@/components/DashboardComponents/Header";
@@ -22,6 +23,11 @@ const page = async () => {
     const deposits = transactions?.filter((transaction) => transaction.type === "Deposit");
     const currentCurrency = user?.currency
 
+    if (user?.isSuspended){
+       permanentRedirect('/suspend') 
+    }
+    
+ 
     return ( 
         <main>
             <Header page="Dashboard" profilePicSrc={user?.profileImgSrc} name={`${user?.firstName} ${user?.lastName}`} accountNumber={user?.accountNumber}/>
