@@ -141,6 +141,8 @@ const TransactionForm = ({ allUsers, loggedInEmail }: transactionProps) => {
             onChange={(e: any) => updateAmount(e.target.value)}
             required
             placeholder="Enter Amount"
+            pattern="\d+" 
+            title="Please enter a positive number"
             type="number"
             name="amount"
             id="amount"
