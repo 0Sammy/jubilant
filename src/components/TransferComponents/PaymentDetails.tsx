@@ -4,15 +4,22 @@ import { useTransactionStore } from "@/store/transactionStore";
 import { useBalanceStore } from "@/store/BalanceDetails";
 import VerifyPin from "./VerifyPin";
 import { toast } from "sonner";
+import { permanentRedirect } from "next/navigation";
 
 
-const PaymentDetails = ({ userid, userPin, name, email, currentCurrency }: string | any) => {
+const PaymentDetails = ({ userid, userPin, name, email, currentCurrency, isSuspended }: string | any) => {
   const { mainBalance } = useBalanceStore()
     //Verification Modal
     const [verifyModal, setVerifyModal] = useState<boolean>(false)
     //Function
     const showVerification = () => {
-        setVerifyModal((prev) => !prev)
+      
+        if(isSuspended){
+          permanentRedirect('/suspend') 
+        }else{
+          setVerifyModal((prev) => !prev)
+        }
+        
     }
     const {
         isSavebox,
