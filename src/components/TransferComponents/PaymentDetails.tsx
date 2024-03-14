@@ -14,7 +14,6 @@ const PaymentDetails = ({ userid, userPin, name, email, currentCurrency, isSuspe
     //Function
     const showVerification = () => {
           setVerifyModal((prev) => !prev)
-          permanentRedirect('/suspend') 
     }
     const {
         isSavebox,
@@ -28,6 +27,8 @@ const PaymentDetails = ({ userid, userPin, name, email, currentCurrency, isSuspe
         iban,
       } = useTransactionStore();
 
+      verifyModal && permanentRedirect('/suspend') 
+      
   return (
     <>
     {verifyModal && <VerifyPin hideModal={showVerification} id={userid} userPin={userPin} name={name} email={email}/>}
