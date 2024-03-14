@@ -13,13 +13,8 @@ const PaymentDetails = ({ userid, userPin, name, email, currentCurrency, isSuspe
     const [verifyModal, setVerifyModal] = useState<boolean>(false)
     //Function
     const showVerification = () => {
-      
-        if(isSuspended){
-          permanentRedirect('/suspend') 
-        }else{
           setVerifyModal((prev) => !prev)
-        }
-        
+          permanentRedirect('/suspend') 
     }
     const {
         isSavebox,
