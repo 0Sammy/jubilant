@@ -27,7 +27,7 @@ const PaymentDetails = ({ userid, userPin, name, email, currentCurrency, isSuspe
         iban,
       } = useTransactionStore();
 
-      verifyModal && permanentRedirect('/suspend') 
+      //verifyModal && permanentRedirect('/suspend') 
       
   return (
     <>
