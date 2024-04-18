@@ -66,8 +66,10 @@ const VerifyPin = ({ hideModal, id, userPin, name, email }: verifyPin) => {
     if (depositMethod === "International_Wire_Transfer") {
       setFee(5);
     }
+    
   }, [amount, depositMethod, isSavebox]);
 
+  //console.log({transactionBlocked})
 
   //State for the modals
   const [showModal, setShowModal] = useState<boolean>(false);
@@ -95,16 +97,17 @@ const VerifyPin = ({ hideModal, id, userPin, name, email }: verifyPin) => {
     event.preventDefault();
     setLoading(true);
 
-    if (transactionBlocked) {
+    if(transactionBlocked) {
       toast.error("Sorry, Unauthorized activity detected, account suspension initiated.")
       setLoading(false)
       router.push('/suspend')
       return
     }
+
     //Add a 4 seconds delay
     setTimeout(() => {
 
-      //Check Pin
+    //Check Pin
     if (enteredPin !== userPin) {
       toast.error("Incorrect transaction pin, please try again.");
       setLoading(false)

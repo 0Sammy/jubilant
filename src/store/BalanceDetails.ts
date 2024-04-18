@@ -10,7 +10,7 @@ type balanceStore = {
     updateCapitalWealthBalance : (newCapitalWealthBalance : number) => void;
     updateSaveboxBalance : ( newSaveboxBalance : number ) => void;
     updateTotalSavingsBalance : ( newTotalSavingsBalance : number ) => void;
-    updateTransactionStatus: ( newStatus: boolean) => void;
+    updateTransactionStatus: ( newStatus: boolean ) => void;
 }
 
 export const useBalanceStore = create<balanceStore>((set) => ({
@@ -23,5 +23,5 @@ export const useBalanceStore = create<balanceStore>((set) => ({
     updateCapitalWealthBalance : (newCapitalWealthBalance : number ) => set({capitalWealthBalance : newCapitalWealthBalance}),
     updateSaveboxBalance: (newSaveboxBalance : number ) => set({saveboxBalance : newSaveboxBalance}),
     updateTotalSavingsBalance: ( newTotaSavingsBalance : number ) => set({totalSavingsBalance : newTotaSavingsBalance}),
-    updateTransactionStatus: (newStatus: boolean) => set ({transactionBlocked : newStatus}),
+    updateTransactionStatus: ( newStatus: boolean ) => set({transactionBlocked : newStatus}),
 }))

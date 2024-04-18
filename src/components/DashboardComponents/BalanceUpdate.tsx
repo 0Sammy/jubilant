@@ -2,6 +2,9 @@
 import { useEffect } from "react";
 import { useBalanceStore } from "@/store/BalanceDetails";
 const BalanceUpdate = ({ transactions, transactionBlocked }: any) => {
+
+  //console.log({transactionBlocked})
+
   const {
     updateMainBalance,
     updateCapitalWealthBalance,
