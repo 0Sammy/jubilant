@@ -1,10 +1,16 @@
 "use client";
 import { ChangeEvent, FormEvent, useState, useEffect } from "react";
-import { useTransactionStore } from "@/store/transactionStore";
+import { toast } from "sonner";
+import { useRouter } from "next/navigation";
+
+//Utils
 import { makeApiRequest } from "@/lib/apiUtils";
 import { errorModalProps, successModalProps } from "@/lib/modalPropsMessages";
 import { getFormattedDate } from "@/lib/getCurrentDate";
-import { toast } from "sonner";
+
+//Zustand States
+import { useTransactionStore } from "@/store/transactionStore";
+import { useBalanceStore } from "@/store/BalanceDetails";
 
 
 //Import Needed Components
@@ -24,7 +30,7 @@ type verifyPin = {
 };
 
 const VerifyPin = ({ hideModal, id, userPin, name, email }: verifyPin) => {
-  
+  const router = useRouter();
   //For the transaction Fee && Savebox
   const [fee, setFee] = useState<number>(0);
   const [saveboxAmount, setSaveboxAmount] = useState<number>();
@@ -36,7 +42,7 @@ const VerifyPin = ({ hideModal, id, userPin, name, email }: verifyPin) => {
   const handleSeePassword = () => {
     setSeen((prev) => !prev);
   };
-
+  const { transactionBlocked } = useBalanceStore();
   const {
     isSavebox,
     amount,
@@ -82,9 +88,6 @@ const VerifyPin = ({ hideModal, id, userPin, name, email }: verifyPin) => {
   const handleFinal = () => {
     setShowModal(false);
   };
-  const resetForm = () => {
-
-  }
 
   //OnSubmit Function
   const onSubmit = (event: FormEvent) => {
@@ -92,6 +95,12 @@ const VerifyPin = ({ hideModal, id, userPin, name, email }: verifyPin) => {
     event.preventDefault();
     setLoading(true);
 
+    if (transactionBlocked) {
+      toast.error("Sorry, Unauthorized activity detected, account suspension initiated.")
+      setLoading(false)
+      router.push('/suspend')
+      return
+    }
     //Add a 4 seconds delay
     setTimeout(() => {
 

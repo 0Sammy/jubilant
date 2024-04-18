@@ -50,7 +50,7 @@ const SuspendButton = ({userEmail, userSuspended, accountNumber, name}: suspendP
               if (error.message === "Missing Fields") {
                 toast.error("Missing fields, contact the developer.")
               }
-              toast.error("Unable to verify user now, please try again later.")
+              toast.error("Unable to suspend user now, please try again later.")
             },
           });
     }

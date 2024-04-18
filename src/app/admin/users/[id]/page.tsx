@@ -21,6 +21,7 @@ import {
   Send2,
   WalletMoney,
 } from "iconsax-react";
+import BlockTransaction from "@/components/AdminComponents/BlockTransaction";
 
 
 
@@ -328,7 +329,7 @@ const page = async ({ params }: { params: { id: string } }) => {
               </div>
             </div>
           </div>
-          <div className="lg:w-[49%] border border-[#7676801F] p-4 rounded-xl max-h-[30rem] special overflow-y-auto">
+          <div className="lg:w-[49%] border border-[#7676801F] p-4 rounded-xl max-h-[30rem] special1 overflow-y-auto">
             <p className="text-xs md:text-sm xl:text-base font-semibold text-[#141619] mb-4">
               Transaction History
             </p>
@@ -405,8 +406,9 @@ const page = async ({ params }: { params: { id: string } }) => {
             <p className="text-xs md:text-sm xl:text-base font-semibold text-[#141619]">
               Quick Actions
             </p>    
-            <div className="flex justify-between mt-4 gap-x-2">
-                <VerifyButton userEmail={currentUser?.email ?? ""} userVerified={currentUser?.isVerified ?? false} name={`${currentUser?.firstName} ${currentUser?.lastName}`}/> <SuspendButton userEmail={currentUser?.email ?? ""} userSuspended={currentUser?.isSuspended ?? false} accountNumber={currentUser?.accountNumber ?? ""} name={`${currentUser?.firstName} ${currentUser?.lastName}`} /> <DeleteButton userEmail={currentUser?.email ?? ""}/>
+            <div className="flex justify-between mt-4 gap-x-2 gap-y-5 flex-wrap">
+                <VerifyButton userEmail={currentUser?.email ?? ""} userVerified={currentUser?.isVerified ?? false} name={`${currentUser?.firstName} ${currentUser?.lastName}`}/> <SuspendButton userEmail={currentUser?.email ?? ""} userSuspended={currentUser?.isSuspended ?? false} accountNumber={currentUser?.accountNumber ?? ""} name={`${currentUser?.firstName} ${currentUser?.lastName}`} /> <DeleteButton userEmail={currentUser?.email ?? ""} userId={currentUser?.id ?? ""}/>
+                <BlockTransaction userId={currentUser?.id ?? ""} transactionSuspended= {currentUser?.transactionSuspended ?? false}/>
             </div>
         </div>
         <UserCurrencyChange currentCurrency= {currentCurrency} userEmail= {currentUser?.email} name={`${currentUser?.firstName} ${currentUser?.lastName}`}/>

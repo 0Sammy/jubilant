@@ -31,7 +31,7 @@ const page = async () => {
     return ( 
         <main>
             <Header page="Dashboard" profilePicSrc={user?.profileImgSrc} name={`${user?.firstName} ${user?.lastName}`} accountNumber={user?.accountNumber}/>
-            <BalanceUpdate transactions={transactions}/>
+            <BalanceUpdate transactions={transactions} transactionBlocked={user?.transactionSuspended}/>
             <div className="px-4 md:px-6 xl:px-8 flex flex-col gap-y-10 lg:gap-y-0 lg:flex-row justify-between mt-5 lg:mt-10">
                 <div className="lg:w-[49%] flex flex-col gap-y-10 ">
                     <AccountDetails currentCurrency={currentCurrency}/>

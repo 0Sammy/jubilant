@@ -16,6 +16,7 @@ model User {
   isEmailVerified             Boolean       @default(false)
   isVerified                  Boolean       @default(false)
   isSuspended                 Boolean       @default(false)
+  transactionSuspended        Boolean       @default(false)
   hashedPassword              String
   dateOfBirth                 String
   profileImgSrc               String

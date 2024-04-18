@@ -128,7 +128,6 @@ body::-webkit-scrollbar-track {
   background: #cfcdcd;
 }
 /* Custom style for customized scroll bar */
-
 .special::-webkit-scrollbar {
   height: 5px;
 }
@@ -142,5 +141,22 @@ body::-webkit-scrollbar-track {
 }
 
 .special::-webkit-scrollbar-track {
+  background: #dff1ea;
+}
+
+/* Custom style for customized 1 scroll bar */
+.special1::-webkit-scrollbar {
+  width: 5px;
+}
+
+.special1::-webkit-scrollbar-thumb {
+  background-color: #e0ab99;
+  border-radius: 2px;
+}
+.special1::-webkit-scrollbar-thumb:hover {
+  background-color: #f7baa8;
+}
+
+.special1::-webkit-scrollbar-track {
   background: #dff1ea;
 }

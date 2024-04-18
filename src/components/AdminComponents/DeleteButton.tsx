@@ -6,16 +6,17 @@ import { redirect } from 'next/navigation'
 
 type deleteProps = {
     userEmail: string
+    userId: string
 }
-const DeleteButton = ({userEmail} :deleteProps) => {
+const DeleteButton = ({userEmail, userId} :deleteProps) => {
 
     const [deleted, setDeleted] = useState<boolean>(false)
 
     const onSubmit = (event: FormEvent) => {
         event.preventDefault();
-        toast.info("Deleting User")
+        toast.info("Note, deleting this user, deletes all the user transactions....")
         
-        const formData = { email: userEmail };
+        const formData = { email: userEmail, id: userId };
 
         makeApiRequest("/adminDeleteUser", "post", formData, {
             onSuccess: () => {

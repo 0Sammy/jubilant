@@ -1,15 +1,18 @@
 "use client";
 import { useEffect } from "react";
 import { useBalanceStore } from "@/store/BalanceDetails";
-const BalanceUpdate = ({ transactions }: any) => {
+const BalanceUpdate = ({ transactions, transactionBlocked }: any) => {
   const {
     updateMainBalance,
     updateCapitalWealthBalance,
     updateSaveboxBalance,
     updateTotalSavingsBalance,
+    updateTransactionStatus,
   } = useBalanceStore();
 
   useEffect(() => {
+    updateTransactionStatus(transactionBlocked)
+    
     // Filter and accumulate Withdrawals
     const withdrawalAmount = transactions && transactions 
       .filter(
@@ -95,7 +98,7 @@ const totalSavings = capitalWealthAmount + saveBoxAmount
       updateCapitalWealthBalance(capitalWealthAmount)
       updateMainBalance(mainBalance)
       updateTotalSavingsBalance(totalSavings)
-  }, [transactions, updateCapitalWealthBalance, updateMainBalance, updateSaveboxBalance, updateTotalSavingsBalance]);
+  }, [transactionBlocked, transactions, updateCapitalWealthBalance, updateMainBalance, updateSaveboxBalance, updateTotalSavingsBalance, updateTransactionStatus]);
 
 
   return <main></main>;
