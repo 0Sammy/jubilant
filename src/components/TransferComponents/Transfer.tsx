@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import { useTransactionStore } from "@/store/transactionStore";
 
 //Import Needed Icons
-import { ArrowRotateRight } from "iconsax-react";
+import { ArrowLeft3, ArrowRight3, ChartCircle } from "iconsax-react";
 
 const Transfer = () => {
   //States for the transactions
@@ -33,6 +33,7 @@ const Transfer = () => {
   const [showInputField, setShowInputField] = useState<boolean>(false);
   const [showIcon, setShowIcon] = useState<boolean>(false);
   const [saveBox, setSaveBox] = useState<boolean>(false);
+  const [page, setPage] = useState<number>(0)
   //For the international transfer
   const handleInternationalTransferChange = () => {
     setInternationalTransfer((prevValue) => !prevValue);
@@ -50,7 +51,7 @@ const Transfer = () => {
       const timeoutId = setTimeout(() => {
         setShowIcon(false);
         setShowInputField(true);
-      }, 8000);
+      }, 4000);
 
       return () => clearTimeout(timeoutId);
     } else {
@@ -75,7 +76,9 @@ const Transfer = () => {
   return (
     <main className="text-xs md:text-sm xl:text-base">
       <form>
-        <div className="flex flex-col gap-y-1">
+        { page === 0 && 
+          <>
+            <div className="flex flex-col gap-y-1">
           <label
             htmlFor="accountNumber"
             className="text-sm lg:text-base text-[#06121B] font-semibold cursor-pointer"
@@ -89,7 +92,6 @@ const Transfer = () => {
               updateAccountNumber(e.target.value);
             }}
             required
-            placeholder="0930202020"
             pattern="\d{10}"
             type="text"
             title="Please enter a 10 digit account number"
@@ -101,7 +103,7 @@ const Transfer = () => {
         </div>
         {showIcon && (
           <div className="flex gap-x-2 items-center mt-4">
-            <ArrowRotateRight size="24" className="text-primary animate-spin" />
+            <ChartCircle size="24" className="text-primary animate-spin" />
             <p className="text-xs xl:text-sm text-textPrimary">
               Fetching Account Details
             </p>
@@ -123,7 +125,6 @@ const Transfer = () => {
                 value={bankName}
                 onChange={(e: any) => updateBankName(e.target.value)}
                 required
-                placeholder="Deutsche Bank"
                 type="text"
                 title="Please enter the bank name"
                 name="bankName"
@@ -142,7 +143,6 @@ const Transfer = () => {
                 value={accountName}
                 onChange={(e: any) => updateAccountName(e.target.value)}
                 required
-                placeholder="John Doe"
                 type="text"
                 name="accountName"
                 id="accountName"
@@ -171,6 +171,11 @@ const Transfer = () => {
             className="border border-[#E6E7E8] px-2 xl:px-4 py-2 md:py-3 focus:border-primary rounded-md focus:outline-none placeholder:text-xs xl:placeholder:text-sm placeholder:text-[#9EA0A3]"
           />
         </div>
+          </>
+        }
+        
+        {page === 1 && 
+        <>
         <div className="flex flex-col gap-y-1 mt-4">
           <label
             htmlFor="description"
@@ -182,7 +187,6 @@ const Transfer = () => {
             value={description}
             onChange={(e: any) => updateDescription(e.target.value)}
             required
-            placeholder="Enter a brief Description"
             name="description"
             id="description"
             maxLength={50}
@@ -261,6 +265,22 @@ const Transfer = () => {
             </p>
           </div>
         )}
+        </>}
+        <div className="flex items-start justify-end mt-4">
+          {page === 1 &&
+            <div className="flex items-center cursor-pointer group" onClick={(e: any) => setPage(0)}>
+              <ArrowLeft3 size="24" className="text-primary group-hover:text-black duration-300" variant="Bold"/>
+              <p className="text-xs xl:text-sm">Prev</p>
+            </div>
+          }
+          {page === 0 &&
+            <div className="flex items-center cursor-pointer group" onClick={(e: any) => setPage(1)}>
+              <p className="text-xs xl:text-sm">Next</p>
+              <ArrowRight3 size="24" className="text-primary group-hover:text-black duration-300" variant="Bold"/>
+            </div>
+          }  
+            
+        </div>
       </form>
     </main>
   );

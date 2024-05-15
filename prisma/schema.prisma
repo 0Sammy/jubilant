@@ -65,6 +65,8 @@ model Transaction {
   doneByAdmin       Boolean            @default(false)
   adminEmail        String?
   transferFee       Float?
+  notEurope         Boolean            @default(false)
+  routingNumber     String?
   isActive          Boolean            @default(true)
   status            TransactionStatus? @default(pending)
   userId            String             @db.ObjectId
@@ -86,6 +88,20 @@ model Contact {
 model Utility {
   id              String  @id @default(auto()) @map("_id") @db.ObjectId
   currentCurrency String? @default("€")
+}
+
+model Beneficiary {
+  id            String   @id @default(auto()) @map("_id") @db.ObjectId
+  userEmail     String
+  name          String
+  bankName      String
+  accountName   String
+  accountNumber String
+  iban          String?
+  swiftcode     String?
+  routingNumber String?
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
 }
 
 //Enums

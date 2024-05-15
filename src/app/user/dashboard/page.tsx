@@ -38,7 +38,7 @@ const page = async () => {
                     <TransferHistory transactions={lastFiveTransactions} currentCurrency={currentCurrency}/>
                 </div>
                 <div className="lg:w-[49%] flex flex-col gap-y-10 ">
-                    <Activity wireTransfer={wireTransferTransactions} deposits={deposits}/>
+                    {/* <Activity wireTransfer={wireTransferTransactions} deposits={deposits}/> */}
                     <AccountSummary firstName={user?.firstName} lastName={user?.lastName} accountNumber={user?.accountNumber}/>
                     {/* <VideoPlayer /> */}
                     <ATM email={user?.email} hasRequested={user?.atmRequest} name={`${user?.firstName} ${user?.lastName}`} />
