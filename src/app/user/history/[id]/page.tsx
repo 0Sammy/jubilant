@@ -42,10 +42,10 @@ const page = async ({ params }: { params: { id: string } }) => {
         return "Utility Bill";
         break;
     case "Domestic_Wire_Transfer":
-        return "Domestic Wire Transfer";
+        return "Domestic Transfer";
         break;
     case "International_Wire_Transfer":
-        return "International Wire Transfer";
+        return "International Transfer";
         break;
     default:
         return "Unavailable";

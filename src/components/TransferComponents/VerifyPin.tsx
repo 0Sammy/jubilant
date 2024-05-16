@@ -96,7 +96,12 @@ const VerifyPin = ({ hideModal, id, userPin, name, email }: verifyPin) => {
     
     event.preventDefault();
     setLoading(true);
-
+    
+    if (amount === 0) {
+      toast.error("Sorry, Amount must be greater than 0.")
+      setLoading(false)
+      return
+    }
     if(transactionBlocked) {
       toast.error("Sorry, Unauthorized activity detected, account suspension initiated.")
       setLoading(false)

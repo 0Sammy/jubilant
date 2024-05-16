@@ -8,7 +8,7 @@ import { Bill, DirectboxReceive, Send2, WalletMoney } from "iconsax-react";
 
 const History = ({transactions, currentCurrency}: any ) => {
     return ( 
-        <main className="border border-[#7676801F] rounded-lg p-4 mb-24 overflow-y-auto special max-h-screen">
+        <main className="border border-[#7676801F] rounded-lg p-4 mb-24 overflow-y-auto special1 max-h-screen">
             <p className="text-sm lg:text-base text-[#06121B] font-semibold">All transactions</p>
             <div className="flex flex-col gap-y-2 mt-6 mb-4">
                 {transactions && transactions.map((transaction: any) => (
@@ -22,7 +22,7 @@ const History = ({transactions, currentCurrency}: any ) => {
                             </div>
 
                             <div className="flex flex-col gap-y-0.5">
-                                <p className="text-[#141619] text-xs md:text-sm xl:text-base font-medium capitalize">{transaction.type === "Deposit" ? "Deposit" : transaction.type === "Domestic_Wire_Transfer" ? "Local Wire Transfer" : transaction.type === "International_Wire_Transfer" ? "International Wire Transfer" : transaction.type === "Utility_Bill" ? "Utility Bill" : "Savings"}</p>
+                                <p className="text-[#141619] text-xs md:text-sm xl:text-base font-medium capitalize">{transaction.type === "Deposit" ? "Deposit" : transaction.type === "Domestic_Wire_Transfer" ? "Domestic Transfer" : transaction.type === "International_Wire_Transfer" ? "International Transfer" : transaction.type === "Utility_Bill" ? "Utility Bill" : "Savings"}</p>
                                 <p className="text-[#9EA0A3] text-[0.6rem] xl:text-xs">{transaction.doneByAdmin ? formatDateTime(transaction.customCreatedTime) : formatDate(transaction.createdAt)}</p>
                             </div>
                         </div>

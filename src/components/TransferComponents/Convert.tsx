@@ -91,7 +91,7 @@ const Convert = () => {
 
     return (
         <main>
-            <p className="text-sm lg:text-base text-[#06121B] font-semibold my-4">Convert Amount</p>
+            <p className="text-sm lg:text-base text-[#06121B] font-semibold my-14">Convert Amount</p>
             <div className="flex flex-col gap-y-5 2xl:gap-y-0 2xl:flex-row 2xl:justify-between 2xl:items-center">
                 <div className="relative min-w-[14rem] 2xl:w-[39%] cursor-pointer">
                     <div className="bg-[#EBEBF52E] p-3 border border-[#7676801F] flex items-center justify-between rounded-lg" onClick={() => setModalOpen1(!modalOpen1)}>

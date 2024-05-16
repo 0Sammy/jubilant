@@ -32,9 +32,9 @@ const page = async () => {
                 {/* <div className="lg:w-[49%] flex flex-col gap-y-10">
                     <AccountDetails />
                 </div> */}
-                <div className="lg:w-[49%] flex flex-col gap-y-10">
+                {/* <div className="lg:w-[49%] flex flex-col gap-y-10">
                     <Activity wireTransfer={wireTransferTransactions} deposits={deposits}/>
-                </div>
+                </div> */}
             </div>
             <div className="px-4 md:px-6 xl:px-8 mt-10">
                 <History transactions={transactions} currentCurrency={currentCurrency}/>

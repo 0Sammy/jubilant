@@ -2,8 +2,12 @@
 import { useState, useEffect } from "react";
 import { useTransactionStore } from "@/store/transactionStore";
 
+//Import Needed Components
+import Convert from "./Convert";
+
 //Import Needed Icons
 import { ArrowLeft3, ArrowRight3, ChartCircle } from "iconsax-react";
+
 
 const Transfer = () => {
   //States for the transactions
@@ -76,7 +80,7 @@ const Transfer = () => {
   return (
     <main className="text-xs md:text-sm xl:text-base">
       <form>
-        { page === 0 && 
+        { page === 0 &&
           <>
             <div className="flex flex-col gap-y-1">
           <label
@@ -152,18 +156,10 @@ const Transfer = () => {
           </div>
         )}
         <div className="flex flex-col gap-y-1 mt-4">
-          <label
-            htmlFor="amount"
-            className="text-sm lg:text-base text-[#06121B] font-semibold cursor-pointer"
-          >
+          <label htmlFor="amount" className="text-sm lg:text-base text-[#06121B] font-semibold cursor-pointer">
             Amount
           </label>
-          <input
-            value={amount}
-            onChange={(e: any) => updateAmount(e.target.value)}
-            required
-            placeholder="Enter Amount"
-            type="number"
+          <input value={amount} onChange={(e: any) => updateAmount(e.target.value)} required placeholder="Enter Amount" type="number"
             pattern="\d+" 
             title="Please enter a positive number"
             name="amount"
@@ -171,6 +167,7 @@ const Transfer = () => {
             className="border border-[#E6E7E8] px-2 xl:px-4 py-2 md:py-3 focus:border-primary rounded-md focus:outline-none placeholder:text-xs xl:placeholder:text-sm placeholder:text-[#9EA0A3]"
           />
         </div>
+        <Convert />
           </>
         }
         
@@ -273,8 +270,8 @@ const Transfer = () => {
               <p className="text-xs xl:text-sm">Prev</p>
             </div>
           }
-          {page === 0 &&
-            <div className="flex items-center cursor-pointer group" onClick={(e: any) => setPage(1)}>
+          {page === 0 && amount !== 0 && amount && accountName && accountNumber && bankName &&
+            <div className="flex items-center cursor-pointer group" onClick={(e: React.MouseEvent) => setPage(1)}>
               <p className="text-xs xl:text-sm">Next</p>
               <ArrowRight3 size="24" className="text-primary group-hover:text-black duration-300" variant="Bold"/>
             </div>
