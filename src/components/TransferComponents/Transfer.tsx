@@ -85,7 +85,7 @@ const Transfer = () => {
             <div className="flex flex-col gap-y-1">
           <label
             htmlFor="accountNumber"
-            className="text-sm lg:text-base text-[#06121B] font-semibold cursor-pointer"
+            className="text-sm lg:text-base text-[#06121B] font-semibold cursor-pointer bg-orangeRed"
           >
             Account number
           </label>
@@ -121,7 +121,7 @@ const Transfer = () => {
             <div className="flex flex-col gap-y-1">
               <label
                 htmlFor="bankName"
-                className="text-sm lg:text-base text-[#06121B] font-semibold cursor-pointer"
+                className="text-sm lg:text-base text-[#06121B] font-semibold cursor-pointer bg-orangeRed"
               >
                 Bank name
               </label>
@@ -139,7 +139,7 @@ const Transfer = () => {
             <div className="flex flex-col gap-y-1 mt-4">
               <label
                 htmlFor="accountName"
-                className="text-sm lg:text-base text-[#06121B] font-semibold cursor-pointer"
+                className="text-sm lg:text-base text-[#06121B] font-semibold cursor-pointer bg-orangeRed"
               >
                 Account name
               </label>
@@ -156,7 +156,7 @@ const Transfer = () => {
           </div>
         )}
         <div className="flex flex-col gap-y-1 mt-4">
-          <label htmlFor="amount" className="text-sm lg:text-base text-[#06121B] font-semibold cursor-pointer">
+          <label htmlFor="amount" className="text-sm lg:text-base text-[#06121B] font-semibold cursor-pointer bg-orangeRed">
             Amount
           </label>
           <input value={amount} onChange={(e: any) => updateAmount(e.target.value)} required placeholder="Enter Amount" type="number"
@@ -176,7 +176,7 @@ const Transfer = () => {
         <div className="flex flex-col gap-y-1 mt-4">
           <label
             htmlFor="description"
-            className="text-sm lg:text-base text-[#06121B] font-semibold cursor-pointer"
+            className="text-sm lg:text-base text-[#06121B] font-semibold cursor-pointer bg-orangeRed"
           >
             Description
           </label>
@@ -195,7 +195,7 @@ const Transfer = () => {
             internationalTransfer
               ? "bg-indigo-50 text-indigo-900 ring-indigo-200"
               : ""
-          } p-2 md:p-3 flex justify-between rounded-lg cursor-pointer hover:bg-[#B9BAC0] hover:bg-opacity-20`}
+          } p-2 md:p-3 flex justify-between rounded-lg cursor-pointer bg-orangeRed hover:bg-[#B9BAC0] hover:bg-opacity-20`}
         >
           International Transfer?
           <input
@@ -208,7 +208,7 @@ const Transfer = () => {
         <label
           className={`mt-4 border border-[#E6E7E8] ${
             saveBox ? "bg-indigo-50 text-indigo-900 ring-indigo-200" : ""
-          } p-2 md:p-3 flex justify-between rounded-lg cursor-pointer hover:bg-[#B9BAC0] hover:bg-opacity-20`}
+          } p-2 md:p-3 flex justify-between rounded-lg cursor-pointer bg-orangeRed hover:bg-[#B9BAC0] hover:bg-opacity-20`}
         >
           Save 1% of the transfer amount
           <input
@@ -223,7 +223,7 @@ const Transfer = () => {
             <div className="flex flex-col gap-y-1 mt-4">
               <label
                 htmlFor="iban"
-                className="text-sm lg:text-base text-[#06121B] font-semibold cursor-pointer"
+                className="text-sm lg:text-base text-[#06121B] font-semibold cursor-pointer bg-orangeRed"
               >
                 IBAN
               </label>
@@ -241,7 +241,7 @@ const Transfer = () => {
             <div className="flex flex-col gap-y-1 mt-4">
               <label
                 htmlFor="swiftCode"
-                className="text-sm lg:text-base text-[#06121B] font-semibold cursor-pointer"
+                className="text-sm lg:text-base text-[#06121B] font-semibold cursor-pointer bg-orangeRed"
               >
                 Swift Code
               </label>
@@ -263,17 +263,17 @@ const Transfer = () => {
           </div>
         )}
         </>}
-        <div className="flex items-start justify-end mt-4">
+        <div className="mt-10">
           {page === 1 &&
-            <div className="flex items-center cursor-pointer group" onClick={(e: any) => setPage(0)}>
-              <ArrowLeft3 size="24" className="text-primary group-hover:text-black duration-300" variant="Bold"/>
+            <div className="text-white flex items-center justify-center w-full bg-primary py-3 cursor-pointer hover:bg-secondary rounded-md text-center duration-300" onClick={(e: any) => setPage(0)}>
+              <ArrowLeft3 size="24" variant="Bold"/>
               <p className="text-xs xl:text-sm">Prev</p>
             </div>
           }
           {page === 0 && amount !== 0 && amount && accountName && accountNumber && bankName &&
-            <div className="flex items-center cursor-pointer group" onClick={(e: React.MouseEvent) => setPage(1)}>
+            <div className="text-white flex items-center justify-center w-full bg-primary py-3 cursor-pointer hover:bg-secondary rounded-md text-center duration-300" onClick={(e: React.MouseEvent) => setPage(1)}>
               <p className="text-xs xl:text-sm">Next</p>
-              <ArrowRight3 size="24" className="text-primary group-hover:text-black duration-300" variant="Bold"/>
+              <ArrowRight3 size="24" variant="Bold"/>
             </div>
           }  
             
