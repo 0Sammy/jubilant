@@ -6,7 +6,7 @@ export default async function getUserBeneficiaries(email: string | any) {
 
     const beneficiaries = await prisma.beneficiary.findMany({
       where: {
-        userEmail: email.toLowerCase(),
+        userEmail: email,
       },
     });
 
