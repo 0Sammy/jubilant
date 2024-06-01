@@ -1,6 +1,6 @@
 import { prisma } from "@/lib/prismadb";
 
-export default async function getUserBeneficiaries(email: string | undefined) {
+export default async function getUserBeneficiaries(email: string) {
     
   if (!email) {
     throw new Error("Email is required to process the request.");
