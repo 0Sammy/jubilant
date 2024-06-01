@@ -23,7 +23,7 @@ const page = async () => {
     const lastFiveTransactions = transactions?.slice(-5);
     const currentCurrency = user?.currency 
     const userEmail = user?.email
-    const beneficiaries = await getUserBeneficiaries(userEmail ?? "");
+    const beneficiaries = await getUserBeneficiaries(userEmail);
     //console.log({beneficiaries})
 
     if (user?.isSuspended){
