@@ -1,12 +1,13 @@
 import { prisma } from "@/lib/prismadb";
 
 export default async function getUserBeneficiaries(email: string | any) {
-    
-  if (!email) {
-    throw new Error("Email is required to process the request.");
-  }
 
   try {
+    
+    if (!email) {
+      throw new Error("Email is required to process the request.");
+    }
+
     const beneficiaries = await prisma.beneficiary.findMany({
       where: {
         userEmail: email.toLowerCase(),
