@@ -39,7 +39,7 @@ const Beneficiary = ({beneficiaries} : any) => {
                           <div className="relative min-w-[3rem] min-h-[3rem] size-8 md:size-10 lg:size-12 rounded-[50%]">
                             <Image src={imageLink} alt="User Icon" fill className="rounded-[50%]" />
                           </div>
-                          <p><strong>{beneficiary.name.slice(0, 7)}.</strong></p>
+                          <p><strong>{beneficiary.accountName.slice(0, 7)}.</strong></p>
                         </div>
                     ))
                 }

@@ -7,10 +7,10 @@ export async function POST (request: NextRequest){
 
     try {
 
-    const { userEmail, name, bankName, accountName, accountNumber } = body
+    const { userEmail, bankName, accountName, accountNumber } = body
     
 
-    if ( !userEmail || !name || !bankName || !accountName || !accountNumber ) return new NextResponse('Missing Fields', { status: 400 })
+    if ( !userEmail || !bankName || !accountName || !accountNumber ) return new NextResponse('Missing Fields', { status: 400 })
 
     const lowercasedEmail = userEmail.toLowerCase();
 
@@ -18,7 +18,6 @@ export async function POST (request: NextRequest){
 
         data: {
             userEmail: lowercasedEmail, 
-            name, 
             bankName, 
             accountName, 
             accountNumber, 
