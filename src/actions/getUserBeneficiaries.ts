@@ -3,10 +3,6 @@ import { prisma } from "@/lib/prismadb";
 export default async function getUserBeneficiaries(email: string | any) {
 
   try {
-    
-    if (!email) {
-      throw new Error("Email is required to process the request.");
-    }
 
     const beneficiaries = await prisma.beneficiary.findMany({
       where: {
