@@ -4,7 +4,6 @@ import { useTransactionStore } from "@/store/transactionStore";
 import { useBalanceStore } from "@/store/BalanceDetails";
 import VerifyPin from "./VerifyPin";
 import { toast } from "sonner";
-import { permanentRedirect } from "next/navigation";
 
 
 const PaymentDetails = ({ userid, userPin, name, email, currentCurrency, isSuspended }: string | any) => {
@@ -34,7 +33,7 @@ const PaymentDetails = ({ userid, userPin, name, email, currentCurrency, isSuspe
     {verifyModal && <VerifyPin hideModal={showVerification} id={userid} userPin={userPin} name={name} email={email}/>}
       <main className={`${!accountNumber && "hidden"} text-xs md:text-sm xl:text-base`}>
         <p className="text-sm lg:text-base text-[#06121B] font-semibold mb-4">
-          Payment Details
+          Transaction Details
         </p>
         <div className="border border-[#7676801F] mt-4 p-4 rounded-lg">
           <div className="flex justify-between items-center">

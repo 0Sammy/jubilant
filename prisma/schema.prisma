@@ -92,14 +92,10 @@ model Utility {
 
 model Beneficiary {
   id            String   @id @default(auto()) @map("_id") @db.ObjectId
-  userEmail     String
-  name          String
+  userEmail     String   @unique
   bankName      String
   accountName   String
   accountNumber String
-  iban          String?
-  swiftcode     String?
-  routingNumber String?
   createdAt     DateTime @default(now())
   updatedAt     DateTime @updatedAt
 }

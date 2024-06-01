@@ -37,6 +37,7 @@ const SecurityForm = ({ hideModal, email, transactionPin }: profileEdit) => {
         if (hideModal) {
           hideModal();
         }
+        window.location.reload()
       },
       onError: (error: any) => {
         setLoading(false);
@@ -46,6 +47,7 @@ const SecurityForm = ({ hideModal, email, transactionPin }: profileEdit) => {
         if (hideModal) {
           hideModal();
         }
+        window.location.reload()
       },
     });
   };

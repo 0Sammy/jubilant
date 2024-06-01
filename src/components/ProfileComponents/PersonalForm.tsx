@@ -38,6 +38,7 @@ const PersonalForm = ({hideModal, email}: profileEdit) => {
                 if(hideModal){
                     hideModal()
                 }
+                window.location.reload()
             },
         onError: (error: any) => {
             setLoading(false)
@@ -46,6 +47,7 @@ const PersonalForm = ({hideModal, email}: profileEdit) => {
             if(hideModal){
                 hideModal()
             }
+            window.location.reload()
             }
         }
     )}

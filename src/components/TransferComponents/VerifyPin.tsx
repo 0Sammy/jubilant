@@ -12,22 +12,17 @@ import { getFormattedDate } from "@/lib/getCurrentDate";
 import { useTransactionStore } from "@/store/transactionStore";
 import { useBalanceStore } from "@/store/BalanceDetails";
 
-
 //Import Needed Components
 import Toast from "../molecules/Toast";
+
+//Import Needed Types
+import { verifyPin } from "@/lib/types";
 
 //Import Needed Icons
 import { AddCircle, ChartCircle } from "iconsax-react";
 import { BsEye, BsEyeSlash } from "react-icons/bs";
 
 
-type verifyPin = {
-  hideModal?: () => void;
-  id?: string;
-  userPin?: string;
-  name?: string;
-  email?: string;
-};
 
 const VerifyPin = ({ hideModal, id, userPin, name, email }: verifyPin) => {
   const router = useRouter();
@@ -53,6 +48,7 @@ const VerifyPin = ({ hideModal, id, userPin, name, email }: verifyPin) => {
     swiftCode,
     description,
     iban,
+    saveBeneficiary,
     reset
   } = useTransactionStore();
 
@@ -77,7 +73,8 @@ const VerifyPin = ({ hideModal, id, userPin, name, email }: verifyPin) => {
   const [message, setMessage] = useState<string>("");
   //For the loading state
   const [loading, setLoading] = useState<boolean>(false);
-  //Display the correct function
+
+  //Display the correct functions
   const handleSuccess = () => {
     setShowModal(true);
     setModalProps(successModalProps);
@@ -87,6 +84,7 @@ const VerifyPin = ({ hideModal, id, userPin, name, email }: verifyPin) => {
     setShowModal(true);
     setModalProps(errorModalProps);
   };
+
   const handleFinal = () => {
     setShowModal(false);
   };
@@ -133,7 +131,8 @@ const VerifyPin = ({ hideModal, id, userPin, name, email }: verifyPin) => {
       saveboxAmount,
       fee,
     };
-    //console.log({ formData });
+
+    const beneficiaryData = {userEmail: email, bankName, accountName, accountNumber }
 
     const emailData = {
       to: email,
@@ -159,22 +158,33 @@ const VerifyPin = ({ hideModal, id, userPin, name, email }: verifyPin) => {
         handleSuccess();
         makeApiRequest("/send-email", "post", emailData, {
           onSuccess: () => {
-            // Handle success
             console.log("Email was sent successfully");
           },
           onError: (error: any) => {
-            // Handle error
             console.log("Couldn't send email.");
           },
         });
+      
+        if(saveBeneficiary){
+            makeApiRequest("/saveBeneficiary", "post", beneficiaryData, {
+            onSuccess: () => {
+              toast.success(`${accountName} was added to your list of beneficiaries`)
+            },
+            onError: (error: any) => {
+              console.log("Sorry, we couldn't add the user to your list of beneficiaries, please try again later.");
+            },
+          });
+        }
+        
         reset()
+        window.location.reload()
       },
       onError: (error: any) => {
-        // Handle error
         setLoading(false);
         setMessage("Unable to process your transfer currently. Please try again.");
         handleError();
         reset()
+        window.location.reload()
       },
     });
 

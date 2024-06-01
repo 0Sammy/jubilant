@@ -56,3 +56,10 @@ export type Transaction = {
   updatedAt?: string;
 };
 
+export type verifyPin = {
+  hideModal?: () => void;
+  id?: string;
+  userPin?: string;
+  name?: string;
+  email?: string;
+};

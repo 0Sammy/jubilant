@@ -1,4 +1,5 @@
 import { getUserDetails } from "@/providers/userDetails";
+import getUserBeneficiaries from "@/actions/getUserBeneficiaries";
 import { permanentRedirect } from "next/navigation";
 
 
@@ -9,6 +10,8 @@ import LastTransactions from "@/components/TransferComponents/LastTransactions";
 import Balance from "@/components/TransferComponents/Balance";
 import PaymentDetails from "@/components/TransferComponents/PaymentDetails";
 import BalanceUpdate from "@/components/DashboardComponents/BalanceUpdate";
+import Beneficiary from "@/components/TransferComponents/Beneficiary";
+
 
 
 
@@ -19,7 +22,9 @@ const page = async () => {
     const transactions = user?.transactions
     const lastFiveTransactions = transactions?.slice(-5);
     const currentCurrency = user?.currency 
-    //console.log({transactions})
+    const beneficiaries = await getUserBeneficiaries(user?.email);
+    //console.log({beneficiaries})
+
     if (user?.isSuspended){
         permanentRedirect('/suspend') 
      }
@@ -35,6 +40,7 @@ const page = async () => {
                 <div className="lg:w-[49%] flex flex-col gap-y-10 border border-[#7676801F] rounded-lg p-4">
                     <Balance currentCurrency={currentCurrency}/>
                     <PaymentDetails userid={user?.id} userPin={user?.transactionPin} name={`${user?.firstName} ${user?.lastName}`} email={user?.email} currentCurrency={currentCurrency} isSuspended={user?.isSuspended}/>
+                    <Beneficiary beneficiaries={beneficiaries}/>
                     <LastTransactions transactions={lastFiveTransactions}/>
                 </div>
             </div>

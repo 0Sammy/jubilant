@@ -29,11 +29,12 @@ const Transfer = () => {
     updateSwiftCode,
     updateDescription,
     updateIban,
+    updateBeneficiary,
   } = useTransactionStore();
   //States for the input
-  const [internationalTransfer, setInternationalTransfer] =
-    useState<boolean>(false);
-  const [inputValue, setInputValue] = useState<string>("");
+  const [internationalTransfer, setInternationalTransfer] = useState<boolean>(false);
+  const [isTyped, setIsTyped] = useState<boolean>(false);
+  const [isBeneficiary, setIsBeneficiary] = useState<boolean>(false);
   const [showInputField, setShowInputField] = useState<boolean>(false);
   const [showIcon, setShowIcon] = useState<boolean>(false);
   const [saveBox, setSaveBox] = useState<boolean>(false);
@@ -46,23 +47,29 @@ const Transfer = () => {
   function handleSaveBoxChange() {
     setSaveBox(prev => !prev);
   }
-  
+  //For the beneficiary
+  function handleBeneficiary() {
+    setIsBeneficiary(prev => !prev)
+  }
   //Use Effect for the Input field
   useEffect(() => {
-    if (inputValue.length > 0) {
-      setShowIcon(true);
+    if(isTyped) {
+        if (accountNumber) {
+        setShowIcon(true);
 
-      const timeoutId = setTimeout(() => {
+        const timeoutId = setTimeout(() => {
+          setShowIcon(false);
+          setShowInputField(true);
+        }, 4000);
+
+        return () => clearTimeout(timeoutId);
+      } else {
+        // If the input value is empty, hide the icon
         setShowIcon(false);
-        setShowInputField(true);
-      }, 4000);
-
-      return () => clearTimeout(timeoutId);
-    } else {
-      // If the input value is empty, hide the icon
-      setShowIcon(false);
+      }
     }
-  }, [inputValue]);
+    
+  }, [accountNumber, isTyped]);
   //Update Deposit Method
   useEffect(() => {
     if (internationalTransfer) {
@@ -70,12 +77,15 @@ const Transfer = () => {
     } else {
       updateDepositMethod("Domestic_Wire_Transfer");
     }
+    
     if(saveBox){
       updateSaveBox(true)
-    }else {
-      updateSaveBox(false)
     }
-  }, [internationalTransfer, saveBox, updateDepositMethod, updateSaveBox]);
+
+    if(isBeneficiary){
+      updateBeneficiary(true)
+    }
+  }, [internationalTransfer, isBeneficiary, saveBox, updateBeneficiary, updateDepositMethod, updateSaveBox]);
 
   return (
     <main className="text-xs md:text-sm xl:text-base">
@@ -83,28 +93,27 @@ const Transfer = () => {
         { page === 0 &&
           <>
             <div className="flex flex-col gap-y-1">
-          <label
-            htmlFor="accountNumber"
-            className="text-sm lg:text-base text-[#06121B] font-semibold cursor-pointer bg-orangeRed"
-          >
-            Account number
-          </label>
-          <input
-            value={accountNumber}
-            onChange={(e) => {
-              setInputValue(e.target.value);
-              updateAccountNumber(e.target.value);
-            }}
-            required
-            pattern="\d{10}"
-            type="text"
-            title="Please enter a 10 digit account number"
-            name="accountNumber"
-            id="accountNumber"
-            max={10}
-            className="border border-[#E6E7E8] px-2 xl:px-4 py-2 md:py-3 focus:border-primary rounded-md focus:outline-none placeholder:text-xs xl:placeholder:text-sm placeholder:text-[#9EA0A3]"
-          />
-        </div>
+              <label
+                htmlFor="accountNumber"
+                className="text-sm lg:text-base text-[#06121B] font-semibold cursor-pointer bg-orangeRed">
+                Account number
+              </label>
+              <input
+                value={accountNumber}
+                onChange={(e) => {
+                  setIsTyped(() => true)
+                  updateAccountNumber(e.target.value);
+                }}
+                required
+                pattern="\d{10}"
+                type="text"
+                title="Please enter the account number (Digits)"
+                name="accountNumber"
+                id="accountNumber"
+                max={10}
+                className="border border-[#E6E7E8] px-2 xl:px-4 py-2 md:py-3 focus:border-primary rounded-md focus:outline-none placeholder:text-xs xl:placeholder:text-sm placeholder:text-[#9EA0A3]"
+              />
+          </div>
         {showIcon && (
           <div className="flex gap-x-2 items-center mt-4">
             <ChartCircle size="24" className="text-primary animate-spin" />
@@ -167,8 +176,22 @@ const Transfer = () => {
             className="border border-[#E6E7E8] px-2 xl:px-4 py-2 md:py-3 focus:border-primary rounded-md focus:outline-none placeholder:text-xs xl:placeholder:text-sm placeholder:text-[#9EA0A3]"
           />
         </div>
-        <Convert />
-          </>
+        <label
+          className={`mt-10 border border-[#E6E7E8] ${
+            isBeneficiary ? "bg-indigo-50 text-indigo-900 ring-indigo-200" : ""
+          } p-2 md:p-3 flex justify-between rounded-lg cursor-pointer bg-orangeRed hover:bg-[#B9BAC0] hover:bg-opacity-20`}
+        >
+          Add User as Beneficiary
+          <input
+            onClick={handleBeneficiary}
+            type="checkbox"
+            checked={isBeneficiary}
+            className="checked:border-indigo-500"
+          />
+        </label>
+        
+          <Convert />
+        </>
         }
         
         {page === 1 && 

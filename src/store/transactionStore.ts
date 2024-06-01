@@ -10,6 +10,7 @@ type transactionStore = {
   description: string;
   iban: string;
   isSavebox: boolean;
+  saveBeneficiary: boolean;
   updateAmount: (newAmount: number) => void;
   updateAccountName: (newName: string) => void;
   updateAccountNumber: (newAccountNumber: string) => void;
@@ -19,6 +20,7 @@ type transactionStore = {
   updateDescription: (newDescription: string) => void;
   updateIban: (newIban: string) => void;
   updateSaveBox: (newSaveBox: boolean) => void;
+  updateBeneficiary: (newBeneficiary: boolean) => void;
   reset: () => void;
 };
 
@@ -32,6 +34,7 @@ export const useTransactionStore = create<transactionStore>((set) => ({
   description: "",
   iban: "",
   isSavebox: false,
+  saveBeneficiary: false,
   updateAmount: (newAmount: number) => set({ amount: newAmount }),
   updateAccountName: (newName: string) => set({ accountName: newName }),
   updateAccountNumber: (newAccountNumber: string) =>
@@ -44,6 +47,7 @@ export const useTransactionStore = create<transactionStore>((set) => ({
     set({ description: newDescription }),
   updateIban: (newIban: string) => set({ iban: newIban }),
   updateSaveBox: (newSaveBox: boolean) => set({ isSavebox: newSaveBox }),
+  updateBeneficiary: (newBeneficiary: boolean) => set({ saveBeneficiary: newBeneficiary }),
   reset: () =>
     set({
       amount: 0,
@@ -55,5 +59,6 @@ export const useTransactionStore = create<transactionStore>((set) => ({
       description: "",
       iban: "",
       isSavebox: false,
+      saveBeneficiary: false,
     }),
 }));

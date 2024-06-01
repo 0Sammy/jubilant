@@ -29,7 +29,7 @@ const SecurityDetails = ({user}: any) => {
                 <p className="text-[#636366] text-[14px] md:text-[16px] border border-[#E6E7E8] p-2 rounded-lg">{user && user.dateOfExpiry}</p>
             </div>
             <div className="flex justify-end mt-10 mb-20 xl:mb-0">
-                <button onClick={updateForm} className="bg-primary px-6 md:px-8 xl:px-10 py-2 md:py-3 text-sm md:text-base rounded-lg text-white border border-primary hover:bg-white hover:text-primary duration-500">Update Details</button>
+                <button onClick={updateForm} className="bg-primary px-6 md:px-8 xl:px-10 py-2 md:py-3 text-sm md:text-base rounded-lg text-white border border-primary hover:bg-white hover:text-primary duration-500">Update Security Details</button>
             </div>
         </main>
      );

@@ -16,7 +16,7 @@ const BlockTransaction = ({userId, transactionSuspended}:  blockProps) => {
     const onSubmit = (event: FormEvent) => {
         setLoading(true)
         event.preventDefault();
-        toast.info("The user will no longer be able to make transactions....")
+        toast.info("Modifying the users transaction status....")
         
         const formData = { id: userId, currentUpdate: !transactionSuspended };
         //console.log({formData})
